@@ -1,5 +1,7 @@
-package dev.dmv04.userservice.exception;
+package dev.dmv04.userservice.handler;
 
+import dev.dmv04.userservice.exception.EmailAlreadyExistsException;
+import dev.dmv04.userservice.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -44,7 +46,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NullPointerException.class)
     @ResponseBody
     public ResponseEntity<String> handleNullPointerException(NullPointerException ex) {
-        // Можно логировать исключение для отладки
         ex.printStackTrace();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Internal server error: " + ex.getMessage());

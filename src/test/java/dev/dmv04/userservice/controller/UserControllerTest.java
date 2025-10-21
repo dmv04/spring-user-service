@@ -149,7 +149,7 @@ class UserControllerTest {
         UpdateUserRequest request = new UpdateUserRequest("", "new@test.com", 50);
 
         User existingUser = new User("Old Name", "old@test.com", 30);
-        existingUser.setId(1L); // Убедитесь, что ID установлен
+        existingUser.setId(1L);
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(existingUser));
         when(userRepository.existsByEmail("new@test.com")).thenReturn(false);
