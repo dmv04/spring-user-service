@@ -8,4 +8,8 @@ public record UserDTO(
         String email,
         Integer age,
         LocalDateTime createdAt
-) {}
+) {
+    public Long getId() {
+        return id;
+    }
+}
