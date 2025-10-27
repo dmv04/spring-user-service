@@ -168,4 +168,13 @@ class UserServiceTest {
 
         verify(userRepository).deleteById(1L);
     }
+
+    @Test
+    void getUserById_shouldThrowWhenNotFound() {
+        when(userRepository.findById(999L)).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> userService.getUserById(999L))
+                .isInstanceOf(UserNotFoundException.class)
+                .hasMessage("User with id 999 not found");
+    }
 }
